@@ -26,6 +26,9 @@ jobs:
       run: |
         net user kamel007 Kamel@123 /add
         net localgroup administrators kamel007 /add
+    - name: Kill existing ngrok processes
+      run: Stop-Process -Name "ngrok" -Force -ErrorAction SilentlyContinue
+      shell: pwsh
     - name: Start Ngrok Tunnel
       run: |
         Start-Process -FilePath "$pwd\ngrok.exe" -ArgumentList "tcp 3389 --log=stdout" -NoNewWindow -RedirectStandardOutput ngrok.log
