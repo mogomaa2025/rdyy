@@ -24,8 +24,8 @@ jobs:
         New-NetFirewallRule -DisplayName "Allow RDP via Ngrok" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 3389
     - name: Create Admin User
       run: |
-        net user kamel007 Kamel@123 /add
-        net localgroup administrators kamel007 /add
+        net user gowano Gomaa@123 /add
+        net localgroup administrators gowano /add
     - name: Start Ngrok Tunnel
       run: |
         Start-Process -FilePath "$pwd\ngrok.exe" -ArgumentList "tcp 3389 --log=stdout" -NoNewWindow -RedirectStandardOutput ngrok.log
